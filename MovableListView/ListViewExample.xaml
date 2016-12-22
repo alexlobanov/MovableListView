@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		x:Class="MovableListView.ListViewExample"
+		xmlns:local="clr-namespace:MovableListView"
+		Padding="0,20,0,0"
+		>
+	<ContentPage.Content>
+		<ContentView Padding="16">
+			<ListView ItemsSource="{Binding BindingList}">
+				<ListView.Header>
+					<StackLayout Orientation="Horizontal">
+						<Label Text = "Dirac.." FontSize="Small"></Label>
+						<Label Text = "Name " FontSize="Small"></Label>
+						<Label Text = " Up/Down" FontSize="Small"></Label>
+					</StackLayout>
+				</ListView.Header>
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<ViewCell>
+							<StackLayout Orientation="Horizontal">
+								<Button Text="{Binding Direction, Converter={local:OrderConverter}}" 
+										Clicked="DirectionChangeClicked" TextColor="Green" />
+								<Label Text="{Binding Name}" VerticalOptions="Center"/>
+								<Button Clicked="ToUpClicked"  Text="▲" />
+								<Button Clicked="ToDownClicked" Text="▼" />
+							</StackLayout>
+						</ViewCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+		</ContentView>
+	</ContentPage.Content>
+</ContentPage>
